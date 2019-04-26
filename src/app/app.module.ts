@@ -5,11 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { TarefasComponent } from './tarefas.component';
+import { CopyrightComponent } from './copyright.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    TarefasComponent
+    TarefasComponent,
+    CopyrightComponent
   ],
   imports: [
     BrowserModule,

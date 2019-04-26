@@ -1,26 +1,42 @@
 import { Component } from '@angular/core';
-import { TarefasComponent } from '@tarefas.componentes'
 
 @Component({
   selector: 'app-root',
-  styles: [`
-    .alerta { color: red; }
-    .mensagem {
-      text-align: center;
-    }
-  `],
   template: `
-    <p [ngClass]="classes()">O campo não pode ficar em branco</p>
-    
-    <h1>Gestão de Tarefas</h1>
-    <tarefas></tarefas>
-    
-  `
+    <div id="box" 
+      (mouseover)="ativa()"
+      (mouseout)="desativa()"
+      (mousemove)="movimenta($event)"
+      [class.sobre]="ativado">
+    </div>
+    <p>Coordenadas: {{coords}}</p>
+    `,
+    styles: [`
+      #box {
+        width: 150px;
+        height: 150px;
+        border: thin solid black;
+      }
+      .sobre  {
+        background-color: red;
+      }
+    `]
 })
 export class AppComponent {
 
-  classes(): any {
-    return {'alerta': true, 'mensagem': true};
+  ativado: boolean = false;
+  coords: string = '';
+  ativa(): void {
+    this.ativado = true;
+  }
+  desativa(): void {
+    this.ativado = false;
+  }
+
+  movimenta(e): void {
+
+    this.coords = "(" + e.clientX + ", " + e.clientY + ")";
+
   }
 
 }

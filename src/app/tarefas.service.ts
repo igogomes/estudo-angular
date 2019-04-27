@@ -57,4 +57,17 @@ export class TarefasService {
 
     }
 
+    getTarefa(n: number) {
+
+        for(let i=0; i<this.tarefas.length; i++) {
+
+            if(this.tarefas[i].codigo == n)
+                return this.tarefas[i];
+
+        }
+
+        return null;
+
+    }
+
 }

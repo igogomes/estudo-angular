@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 
 import { TarefaComponent } from './tarefa.component';
 import { TarefasComponent } from './tarefas.component';
+import { ProjetoComponent } from './projeto.component';
 import { ProjetosComponent } from './projetos.component';
 import { CopyrightComponent } from './copyright.component';
 
@@ -20,6 +21,7 @@ import { PaginaInvalidaComponent } from './paginainvalida.component';
     TarefasComponent,
     TarefaComponent,
     ProjetosComponent,
+    ProjetoComponent,
     CopyrightComponent,
     PaginaInvalidaComponent
   ],

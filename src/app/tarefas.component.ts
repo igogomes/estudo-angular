@@ -9,7 +9,7 @@ import { Projeto, ProjetosService } from './projetos.service';
         <h2>Tarefas</h2>
         <ul>
             <li *ngFor="let t of tarefas">
-                {{t.codigo}} - {{t.tarefa}} 
+                {{t.codigo}} - <a routerLink="/tarefas/{{t.codigo}}">{{t.tarefa}}</a>
                 (Projeto {{t.codigoProjeto}}: 
                     {{nomeProjeto(t.codigoProjeto)}}
                     - 

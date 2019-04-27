@@ -21,4 +21,13 @@ export class ProjetosService {
 
     }
 
+    getProjeto(n: number): Projeto {
+
+        for(let i=0; i<this.projetos.length; i++) 
+            if(this.projetos[i].codigo == n)
+                return this.projetos[i];
+            return null;
+
+    }
+
 }

@@ -6,7 +6,7 @@ import { Projeto, ProjetosService } from './projetos.service';
     selector: 'tarefas',
     template: `
 
-        <h1>Tarefas</h1>
+        <h2>Tarefas</h2>
         <ul>
             <li *ngFor="let t of tarefas">
                 {{t.codigo}} - {{t.tarefa}} 

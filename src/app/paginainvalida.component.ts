@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
     selector: 'paginainvalida',
     template: `
         <h1>Página Inválida</h1>
+        <a routerLink="/tarefas">Retornar</a>
     `
 })
 

@@ -1,44 +1,40 @@
 import { Component } from '@angular/core';
-
+import { Tarefa, TarefasService } from './tarefas.service';
+import { Projeto, ProjetosService } from './projetos.service';
 
 @Component({
     selector: 'tarefas',
     template: `
-        <div [ngSwitch]="grupo">
-            <ul *ngSwitchCase="0">
-                <li *ngFor="let tarefa of tarefasCasa">{{tarefa}}</li>
-            </ul>
-            <ul *ngSwitchCase="1">
-                <li *ngFor="let tarefa of tarefasTrabalho">{{tarefa}}</li>
-            </ul>
-            <ul *ngSwitchCase="2">
-                <li *ngFor="let tarefa of tarefasOutras">{{tarefa}}</li>
-            </ul>
-        </div>
+
+        <h1>Tarefas</h1>
+        <ul>
+            <li *ngFor="let t of tarefas">
+                {{t.codigo}} - {{t.tarefa}} 
+                (Projeto {{t.codigoProjeto}}: 
+                    {{nomeProjeto(t.codigoProjeto)}}
+                    - 
+                    {{t.data|date: 'dd/MM'}} -
+                    Prioridade: {{t.prioridade}})
+            </li>
+        </ul>
     `
 })
 
 export class TarefasComponent { 
 
-    tarefasCasa: string[];
-    tarefasTrabalho: string[];
-    tarefasOutras: string[];
-    grupo: number;
+    tarefas: Tarefa[] = [];
+    projetos: Projeto[] = [];
+    constructor(public ts: TarefasService,
+                public ps: ProjetosService) {
+        this.tarefas = ts.getTarefas();
+        this.projetos = ps.getProjetos();
+    }
 
-    constructor() {
-        this.tarefasCasa = [
-            'Comprar leite',
-            'Pagar conta de luz',
-            'Consertar a cafeteira'
-        ];
-        this.tarefasTrabalho = [
-            'Elaborar campanha de marketing',
-            'Contratar novos fornecedores'
-        ];
-        this.tarefasOutras = [ 
-                'Criar aplicação com Angular'
-        ];
-        this.grupo = 0;
+    nomeProjeto(cp: number): string {
+        for(let i=0; i< this.projetos.length; i++)
+            if(this.projetos[i].codigo == cp)
+                return this.projetos[i].projeto;
+        return 'Projeto inválido';
     }
 
 }

@@ -3,7 +3,10 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <tarefa></tarefa>
+    
+    <router-outlet></router-outlet>
+    <copyright></copyright>
+
   `
 })
 export class AppComponent {
